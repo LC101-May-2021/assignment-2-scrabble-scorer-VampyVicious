@@ -16,6 +16,8 @@ const vowelBonusStructure = {
   1: ['B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Z'],
 };
 
+let newPointStructure;
+
 let oldScrabbleScorer = function(word) {
 	word = word.toUpperCase();
 	let letterPoints = "";
@@ -84,21 +86,25 @@ Enter 0, 1, or 2: `);
 }
 
 function transform(oldPointStructure) {
-  const newish = []
-  
   /*for all the points in old point structure
    make container to hold point value in old point structure
-  then do .length for 2nd part of this bit. for new array, transform into number. then do return thing to end portion of function. console log to check.*/
-  for 
+  then do .length for 2nd part of transform. for new array, transform into number. then do return thing to end portion of function. console log to check.*/
 
-  word = word.toLowerCase();
+  let returnPointStructure = {};
 
+  for(pointValue in oldPointStructure) {
+    for (let i = 0; i < oldPointStructure[pointValue].length; i++){
+      returnPointStructure[oldPointStructure[pointValue][i]] = pointValue;
+    }
+  }
+
+  return returnPointStructure;
 
 };
 
-let newPointStructure;
 
 function runProgram() {
+ newPointStructure = transform(oldPointStructure);
  let userWord = initialPrompt();
  let scoreMethod = scorerPrompt();
  console.log(`Score for ${userWord}: ${scoreMethod.scorerFunction(userWord)}`);

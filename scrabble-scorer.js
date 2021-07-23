@@ -20,14 +20,16 @@ let newPointStructure;
 
 let oldScrabbleScorer = function(word) {
 	word = word.toUpperCase();
-	let letterPoints = "";
- 
-	for (let i = 0; i < word.length; i++) {
+	let letterPoints = 0;
+  
+  for (let i = 0; i < word.length; i++) {
  
 	  for (const pointValue in oldPointStructure) {
  
 		 if (oldPointStructure[pointValue].includes(word[i])) {
-			letterPoints += `Points for '${word[i]}': ${pointValue}\n`
+       // here set letterPoints equal to pointValue
+      letterPoints += Number(pointValue)
+      //`Points for '${word[i]}': ${pointValue}\n`
 		 }
  
 	  }
@@ -53,13 +55,14 @@ let simpleScore = function(word) {
 
 let vowelBonusScore = function(word){
   word = word.toUpperCase();
-    let letterPoints = "";
+    let letterPoints = 0;
   
     for (let i = 0; i < word.length; i++) {
   
       for (const pointValue in vowelBonusStructure) {
   
       if (vowelBonusStructure[pointValue].includes(word[i])) {
+        //letterPoints += pointValue;
         letterPoints += `Points for '${word[i]}': ${pointValue}\n`
       }
   
@@ -107,8 +110,9 @@ function runProgram() {
  newPointStructure = transform(oldPointStructure);
  let userWord = initialPrompt();
  let scoreMethod = scorerPrompt();
- console.log(`Score for ${userWord}: ${scoreMethod.scorerFunction(userWord)}`);
+ console.log(`Score for ${userWord}: \n ${scoreMethod.scorerFunction(userWord)}`);
 }
+
 
 
 

@@ -27,7 +27,6 @@ let oldScrabbleScorer = function(word) {
 	  for (const pointValue in oldPointStructure) {
  
 		 if (oldPointStructure[pointValue].includes(word[i])) {
-       // here set letterPoints equal to pointValue
       letterPoints += Number(pointValue)
       //`Points for '${word[i]}': ${pointValue}\n`
 		 }
@@ -63,7 +62,8 @@ let vowelBonusScore = function(word){
   
       if (vowelBonusStructure[pointValue].includes(word[i])) {
         //letterPoints += pointValue;
-        letterPoints += `Points for '${word[i]}': ${pointValue}\n`
+        letterPoints += Number(pointValue)
+        //`Points for '${word[i]}': ${pointValue}\n`
       }
   
       }
